@@ -1,0 +1,84 @@
+<% if user_signed_in? %> 
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+  <!DOCTYPE html>
+  <!-- Header Menu of the Page -->
+  <header>
+  <!-- Top header menu containing
+  logo and Navigation bar -->
+  <div id="top-header">
+  <!-- Logo -->
+  <div id="logo">
+  <img src="https://www.kbginfra.com/images/KBG_Logo_TSP_500x250.png" />
+  </div>
+  <!-- Navigation Menu -->
+  <nav>
+  <ul>
+  <li class="active">
+  <a href="#">Local Business</a>
+  </li>
+  <li>
+  <a href="#">Local Authority</a>
+  </li>
+  <li>
+  <a href="#">Event</a>
+  </li>
+  <li>
+  <a href="#">Broadcast</a>
+  </li>
+  <li>
+  <a href="#">Message</a>
+  </li>
+  </ul>
+  </nav>
+  </div>
+
+  <!-- Image menu in Header to contain an Image and
+  a sample text over that image -->
+  <div id="header-image-menu">
+  <h2 id="image-text">
+  Karol Bagh Grand
+  </h2>
+  </div>
+  </header>
+
+  <img src="https://www.kbginfra.com/project/kbg-grand_bhavrasla_indore/kbg-grand_cover.jpg" alt="Girl in a jacket" width="1280" height="600">
+
+  <div> Welcome <%= current_user.email %> </div> 
+  <p>Karol Bagh Grand is one of the largest creation of apartments in M.P. by the K.B.G. Group. 
+  Having 900 apartments in various sizes, with beautiful British Elevation and gorgeous pillars, 
+  you would be mesmerized as you enter the British look main entrance. 
+  The township has perfect layout and supplemented with all luxury amenities along with a lifestyle Grand Club. 
+  Exotic and colorful Library, mind relaxing Yoga and Aerobics Hall with beautiful Interior and Soothing Music, 
+  Mind-blowing Guest Room with complete facilities, Gorgeous Multi Faith Temple, 
+  Exclusive Party Lawn supplemented with Stage and Gazebos are a few added features of Karol Bagh Grand, along with other common facilities.
+
+  A Grand Club House inside the township with 24 seater Home Theater, 
+  25m Swimming Pool and Kids Pool, Grand Gymnasium, 
+  Table Tennis & Carom & Chess Room and many more unexpected facilities is an attractive feature of this township. 
+  Vatican City like dome on the Club House brings added beauty to the whole township. 
+  In short, the township is so attractive that no one would go without pleasing a word for it.<p>
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/CSeLldlrQgU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3678.197812156133!2d75.85138197457283!3d22.7951330293338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3963030070dd17bf%3A0xad02917ea06a7b70!2sKarol%20Bagh%2C%20Bhawrasla%2C%20Indore%2C%20Madhya%20Pradesh%20453555!5e0!3m2!1sen!2sin!4v1689659237121!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+  <h3>Suggestion Box</h3>
+  <%= form_with url: suggestions_path do |f| %>
+        <%= f.text_area :suggestion_body, size: "60x10" %>
+        <%= f.submit%>
+    <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% else %>
+  <%= button_to "Sign in", new_user_session_path %> 
+<% end %>
