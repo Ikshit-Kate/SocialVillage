@@ -7,7 +7,7 @@ class SuggestionsController < ApplicationController
         @suggestion = Suggestion.new(set_params)
         @suggestion.user_id = current_user.id
         if @suggestion.save
-            flash.alert = "Suggestion successfully saved"
+            redirect_to root_path
         else
             flash.alert = "Suggestion not saved"
         end
