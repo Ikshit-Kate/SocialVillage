@@ -9,7 +9,7 @@ class SuggestionsController < ApplicationController
         if @suggestion.save
             redirect_to root_path
         else
-            flash.alert = "Suggestion not saved"
+            flash.alert = "Suggestion not saved",status: :unprocessable_entity
         end
     end
 

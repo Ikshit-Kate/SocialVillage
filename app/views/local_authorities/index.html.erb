@@ -1,0 +1,8 @@
+<%= link_to "make new entry", new_local_authority_path%><br><br>
+
+List of users<br>
+
+<% @local_authorities.each do |authority|%> 
+Department: <%= authority.department%>,
+Name: <%= link_to authority.name, authority%>
+<%end%> 

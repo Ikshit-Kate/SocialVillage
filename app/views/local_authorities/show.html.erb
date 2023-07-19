@@ -1,0 +1,15 @@
+<p><b>Department:</b> <%= @local_authority.department%></p>
+
+<p><b>name:</b> <%= @local_authority.name%></p>
+
+<p><b>contact_number:</b> <%= @local_authority.contact_number%></p>
+
+<p><b>email:</b> <%= @local_authority.email%></p>
+
+<p><b>address:</b> <%= @local_authority.address%></p>
+
+
+
+
+<%= link_to "edit", edit_local_authority_path%>
+<%= link_to "delete", local_authority_path, data: {turbo_method: :delete, turbo_confirm: "This will delete the entry?"}%> 
