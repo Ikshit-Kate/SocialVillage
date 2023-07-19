@@ -1,0 +1,7 @@
+
+List of users<br>
+
+<% @suggestions.each do |suggestion|%> 
+<b>User id:</b> <%= suggestion.user_id%><br>
+<b>Suggestion:</b> <%= suggestion.suggestion_body%><br><br>
+<%end%> 

@@ -7,7 +7,7 @@ ruby "2.7.0"
 gem "rails", "~> 7.0.6"
 gem "devise"
 gem 'sassc'
-
+gem "byebug"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
