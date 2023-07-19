@@ -1,0 +1,9 @@
+<%= form_with model: @broadcast do |form| %>
+
+    <%= form.label :heading%> 
+    <%= form.text_field :heading%><br>
+    <%= form.label :body%> 
+    <%= form.text_area :body%><br>
+    <%= form.submit%>
+<%end%>
+ 

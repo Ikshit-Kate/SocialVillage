@@ -1,7 +1,9 @@
-
-List of users<br>
+<b><i>List of users</b></i><br><br>
 
 <% @suggestions.each do |suggestion|%> 
-<b>User id:</b> <%= suggestion.user_id%><br>
-<b>Suggestion:</b> <%= suggestion.suggestion_body%><br><br>
+<b>User name:</b>   <%= suggestion.user.username %><br>
+<b>Suggestion:</b>  <%= suggestion.suggestion_body%><br>
+<b>Date:</b>        <%= suggestion.created_at.to_date %><br>
+<b>Time:</b>        <%= suggestion.created_at.strftime('%H:%M:%S') %><br><br>
+
 <%end%> 

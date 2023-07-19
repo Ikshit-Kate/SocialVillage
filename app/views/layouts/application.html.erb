@@ -1,23 +1,30 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>SocialVillage</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+<title>SocialVillage</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+<%= javascript_importmap_tags %>
+</head>
 
-  <body>
-  <div class="topnav">
-        <a class="active">LuxeLiving</a>
-        <a href="#home">Home</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-        <a href="#news">News</a>
+<body>
+<% if user_signed_in? %> 
+<div class="topnav">
+<a class="active"> <a href="http://localhost:3000/"><img src= "https://www.kbginfra.com/images/KBG_Logo_TSP_500x250.png" width="50px" height="25px" alt="Click to visit home page"/></a>
+
+<a href="#home">Local Business</a>
+<%= link_to "Broadcast",   broadcasts_path  %>
+<%= link_to "Local authority",  local_authorities_path %>
+<a href="#about">Event</a>
+<a href="#news">Message</a>
+
+<%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
 </div>
-    <%= yield %>
-  </body>
+<%end%>
+<%= yield %>
+</body>
 </html>

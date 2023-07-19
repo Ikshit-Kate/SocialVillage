@@ -1,0 +1,50 @@
+<%= link_to "make new entry", new_broadcast_path%><br><br>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Broadcasts</h2>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Heading</th>
+    <th>Message</th>
+  </tr>
+
+    <% @broadcasts.each do |broadcast|%> 
+    <tr>
+        <td><%= broadcast.created_at.to_date%></td>
+        <td><%= broadcast.created_at.strftime('%H:%M:%S')%></td>
+        <td><%= broadcast.heading%></td>
+        <td><%= broadcast.heading%></td>
+        <td><%= broadcast.body%></td>
+  </tr>
+  <%end%> 
+</table>
+
+</body>
+</html>
+

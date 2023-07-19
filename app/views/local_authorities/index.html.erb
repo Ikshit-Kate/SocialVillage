@@ -1,8 +1,41 @@
 <%= link_to "make new entry", new_local_authority_path%><br><br>
 
-List of users<br>
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            }
 
-<% @local_authorities.each do |authority|%> 
-Department: <%= authority.department%>,
-Name: <%= link_to authority.name, authority%>
-<%end%> 
+            td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            }
+
+            tr:nth-child(even) {
+            background-color: #dddddd;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Local Authorities</h2>
+        <table>
+            <tr>
+                <th>Department</th>
+                <th>Name</th>
+            </tr>
+            <% @local_authorities.each do |authority|%> 
+            <tr>
+                <td><%= authority.department%></td>
+                <td><%= link_to authority.name, authority%></td>
+            </tr>
+            <%end%> 
+
+        </table>
+    </body>
+</html>
+
