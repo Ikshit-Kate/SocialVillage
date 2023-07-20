@@ -1,0 +1,16 @@
+<%= link_to "make new entry", new_event_path%><br><br>
+
+
+<% @events.each do |event|%> 
+    <%= event.user.username%>
+    <p><b>Event name:</b> 
+    <%if event.user_id == current_user.id%>
+        <%= link_to event.event_name, event%>
+    <%else%>
+        <%=event.event_name%></p>
+    <%end%>
+    <p><b>Caption:</b> <%=  event.caption %></p>
+    <%= image_tag event.image.url if event.image? %><br><br>
+
+<%end%> 
+

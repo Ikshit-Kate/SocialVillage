@@ -1,0 +1,9 @@
+<p><b>Event name:</b> <%= @event.event_name%></p>
+
+<p><b>Caption:</b> <%= @event.caption%></p>
+<%= image_tag @event.image.url if @event.image? %>
+
+
+
+<%= link_to "edit", edit_event_path%>
+<%= link_to "delete", event_path, data: {turbo_method: :delete, turbo_confirm: "This will delete the entry?"}%> 
