@@ -2,11 +2,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+  <%= ".msg-#{current_user&.id}" %> {
+  background-color: #007bff !important;
+  padding: 10px;
+  }
+  <%= ".cont-#{current_user&.id}" %> {
+  display: flex;
+  justify-content: flex-end
+  }
+</style>
 <title>SocialVillage</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <%= csrf_meta_tags %>
 <%= csp_meta_tag %>
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 <%= javascript_importmap_tags %>
 </head>
@@ -20,7 +31,7 @@
 <%= link_to "Broadcast",   broadcasts_path  %>
 <%= link_to "Local authority",  local_authorities_path %>
 <%= link_to "Events",  events_path %>
-<a href="#news">Message</a>
+<%= link_to "Chat",  rooms_path %>
 
 <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
 </div>
