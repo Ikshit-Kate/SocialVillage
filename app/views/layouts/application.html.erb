@@ -3,6 +3,9 @@
 <html>
 <head>
 <style>
+  .topnav-right {
+  float: right;
+  }
   <%= ".msg-#{current_user&.id}" %> {
   background-color: #007bff !important;
   padding: 10px;
@@ -32,8 +35,9 @@
 <%= link_to "Local authority",  local_authorities_path %>
 <%= link_to "Events",  events_path %>
 <%= link_to "Chat",  rooms_path %>
-
-<%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+<div class="topnav-right">
+<p align="right"><%= button_to "Sign out", destroy_user_session_path, method: :delete %> </p>
+</div>
 </div>
 <%end%>
 <%= yield %>
