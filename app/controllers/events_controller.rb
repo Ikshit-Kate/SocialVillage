@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-    
   def index
     @events = Event.all
   end
@@ -41,8 +40,9 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
-  private 
+  private
+
   def set_params
-    params.require(:event).permit(:event_name, :caption, :image)
+    params.require(:event).permit(:event_name, :caption, images: [])
   end
 end

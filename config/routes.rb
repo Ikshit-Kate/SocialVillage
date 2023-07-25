@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'rooms/index'
-  
-  root "homes#index"
-  devise_for :users, :controllers => { registrations: 'users/registrations' } 
+ 
+  root 'homes#index'
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :users, only: [:show]
   resources :suggestions
   resources :local_authorities
@@ -11,6 +10,5 @@ Rails.application.routes.draw do
   resources :rooms do
     resources :messages
   end
-  
-  
+  resources :businesses
 end

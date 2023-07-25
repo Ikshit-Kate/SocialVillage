@@ -39,11 +39,9 @@ class LocalAuthoritiesController < ApplicationController
     redirect_to local_authorities_path
   end
 
+  private
 
-
-  private 
   def set_params
     params.require(:local_authority).permit(:name, :contact_number, :address, :department, :email)
   end
-
 end

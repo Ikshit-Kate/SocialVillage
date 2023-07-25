@@ -1,7 +1,10 @@
 <p><b>Event name:</b> <%= @event.event_name%></p>
 
 <p><b>Caption:</b> <%= @event.caption%></p>
-<%= image_tag @event.image.url if @event.image? %>
+
+<% @event.images.each do |i|%>
+    <%= image_tag(i, style: "width: 300px; height: auto")%>
+<%end%>
 
 
 

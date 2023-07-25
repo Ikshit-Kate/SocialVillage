@@ -1,0 +1,16 @@
+<%= link_to "make new entry", new_business_path%><br><br>
+
+<% @businesses.each do |business|%> 
+    <p><b>Business name:</b> 
+    <%if business.user_id == current_user.id%>
+        <%= link_to business.name, business%>
+    <%else%>
+        <%=business.name%></p>
+    <%end%>
+    <p><b>Number:</b> <%=  business.email %></p>
+    <% business.images.each do |i|%>
+    <%= image_tag(i, style: "width: 300px; height: auto")%>
+    <%end%>
+
+<%end%> 
+

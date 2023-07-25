@@ -1,45 +1,44 @@
 
 <!DOCTYPE html>
-<html>
-<head>
-<style>
-  .topnav-right {
-  float: right;
-  }
-  <%= ".msg-#{current_user&.id}" %> {
-  background-color: #007bff !important;
-  padding: 10px;
-  }
-  <%= ".cont-#{current_user&.id}" %> {
-  display: flex;
-  justify-content: flex-end
-  }
-</style>
-<title>SocialVillage</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<%= csrf_meta_tags %>
-<%= csp_meta_tag %>
+  <html>
+    <head>
+      <title>SocialVillage</title>
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+      <%= javascript_importmap_tags %>
+      <style>
+        .topnav-right {
+        float: right;
+        }
+        <%= ".msg-#{current_user&.id}" %> {
+        background-color: #007bff !important;
+        padding: 10px;
+        }
+        <%= ".cont-#{current_user&.id}" %> {
+        display: flex;
+        justify-content: flex-end
+        }
+      </style>
+    </head>
+    <body>
+      <% if user_signed_in? %> 
+        <div class="topnav">
+          <a class="active"> <a href="http://localhost:3000/"><img src= "https://www.kbginfra.com/images/KBG_Logo_TSP_500x250.png" width="50px" height="25px" alt="Click to visit home page"/></a>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-<%= javascript_importmap_tags %>
-</head>
-
-<body>
-<% if user_signed_in? %> 
-<div class="topnav">
-<a class="active"> <a href="http://localhost:3000/"><img src= "https://www.kbginfra.com/images/KBG_Logo_TSP_500x250.png" width="50px" height="25px" alt="Click to visit home page"/></a>
-
-<a href="#home">Local Business</a>
-<%= link_to "Broadcast",   broadcasts_path  %>
-<%= link_to "Local authority",  local_authorities_path %>
-<%= link_to "Events",  events_path %>
-<%= link_to "Chat",  rooms_path %>
-<div class="topnav-right">
-<p align="right"><%= button_to "Sign out", destroy_user_session_path, method: :delete %> </p>
-</div>
-</div>
-<%end%>
-<%= yield %>
-</body>
+          <%= link_to "Local Business", businesses_path  %>
+          <%= link_to "Broadcast", broadcasts_path  %>
+          <%= link_to "Local authority", local_authorities_path %>
+          <%= link_to "Events", events_path %>
+          <%= link_to "Chat", rooms_path %>
+        
+          <div class="topnav-right">
+            <p align="right"><%= button_to "Sign out", destroy_user_session_path, method: :delete %> </p>
+          </div>
+        </div>
+      <%end%>
+    <%= yield %>
+  </body>
 </html>

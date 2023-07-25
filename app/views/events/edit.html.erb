@@ -4,8 +4,8 @@
     <%= form.text_field :event_name%><br>
     <%= form.label :caption%> 
     <%= form.text_field :caption%><br>
-    <%= form.label :image%> 
-    <%= form.file_field :image%><br>
+    <%= form.label :images%> 
+    <%= form.file_field :images, multiple: true%><br>
 
     <%= form.submit%>
 <%end%>
