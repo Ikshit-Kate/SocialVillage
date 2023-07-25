@@ -14,4 +14,4 @@
 
 
 <%= link_to "edit", edit_local_authority_path%>
-<%= link_to "delete", local_authority_path, data: {turbo_method: :delete, turbo_confirm: "This will delete the entry?"}%> 
+<%= button_to 'delete', local_authority_path, {:method => :delete, :form_class => "delete"} %>

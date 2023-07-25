@@ -9,4 +9,5 @@
 
 
 <%= link_to "edit", edit_event_path%>
-<%= link_to "delete", event_path, data: {turbo_method: :delete, turbo_confirm: "This will delete the entry?"}%> 
+<%= button_to 'delete', event_path, {:method => :delete, :form_class => "delete"} %>
+

@@ -5,9 +5,7 @@ ruby '2.7.0'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'byebug'
-gem 'carrierwave', '~> 3.0'
 gem 'devise'
-gem 'mini_magick', '~> 4.12'
 gem 'rails', '~> 7.0.6'
 gem 'rubocop-rails', require: false
 gem 'sassc'

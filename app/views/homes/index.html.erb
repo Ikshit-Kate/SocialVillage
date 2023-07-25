@@ -71,8 +71,7 @@
         <%= f.text_area :suggestion_body, size: "100x10" %>
         <%= f.submit%>
   <% end %>
-    
-  <%= link_to "All suggestions",   suggestions_path  %><br>
+  <%= (link_to "All suggestions",  suggestions_path) if (current_user.role == "secretary") %>
     
 
 

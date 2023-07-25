@@ -1,4 +1,4 @@
-<%= link_to "make new entry", new_local_authority_path%><br><br>
+<%= (link_to "make new entry", new_local_authority_path) if (current_user.role == "secretary")%><br><br>
 
 <!DOCTYPE html>
 <html>

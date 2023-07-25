@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
+  enum role: { society_member: 0, secretary: 1 }
 
   scope :all_except, ->(user) { where.not(id: user) }
   after_create_commit { broadcast_append_to 'users' }

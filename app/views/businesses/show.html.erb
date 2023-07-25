@@ -9,4 +9,4 @@
     <%= image_tag(i, style: "width: 300px; height: auto")%>
 <%end%>
 <%= link_to "edit", edit_business_path%>
-<%= link_to "delete", business_path, data: {turbo_method: :delete, turbo_confirm: "This will delete the entry?"}%> 
+<%= button_to "delete", business_path, data: {turbo_method: :delete, turbo_confirm: "This will delete the entry?"}%> 
