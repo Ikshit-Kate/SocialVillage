@@ -12,11 +12,9 @@ class SuggestionsController < ApplicationController
     @suggestion.user_id = current_user.id
 
     if @suggestion.save
-      # Handle successful save
       redirect_to root_path, notice: 'Suggestion created successfully!'
     else
-      # Handle failed save
-      render :new # You might need to create a new.html.erb view for the "new" action
+      redirect_to root_path, status: :unprocessable_entity
     end
   end
 

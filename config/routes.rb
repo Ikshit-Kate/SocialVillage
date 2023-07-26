@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :events
   resources :businesses
   resources :business_products
+  resources :orders
   
   resources :rooms do
     resources :messages

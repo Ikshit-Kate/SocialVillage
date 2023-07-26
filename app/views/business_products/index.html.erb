@@ -29,6 +29,16 @@ tr:nth-child(even) {
 	<%= f.submit "Search"%>
 <% end %>
 
+<h3>Order</h3>
+  <%= form_with url: orders_path do |f| %>
+    <%= f.label :"Shop name"%>
+    <%= f.text_field :business_name%>
+    <%= f.label :"Order"%>
+    <%= f.text_area :customer_order, size: "100x5" %>
+    <%= f.submit%>
+  <% end %>
+<%= link_to "Order History", orders_path, method: :get %>
+
 
 <h2>Business Products</h2>
 

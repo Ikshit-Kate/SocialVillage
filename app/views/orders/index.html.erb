@@ -1,0 +1,9 @@
+ <b><i>Order History</b></i><br><br>
+
+<%@orders.each do |order|%> 
+	<% if (order.user_id == current_user.id)%>
+		<b>Date:</b>  <%= order.created_at.to_date %><br> 
+		<b>From shop:</b>  <%= order.business_name %><br> 
+		<b>Order</b>  <%= order.customer_order %><br><br> 
+	<%end%>
+<%end%>
