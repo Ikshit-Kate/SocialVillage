@@ -1,4 +1,5 @@
-<%= (link_to "make new entry", new_business_path) if (current_user.role == "secretary")%><br><br>
+<%= (link_to "Register a new busines", new_business_path) if (current_user.role == "secretary")%><br><br>
+<%= link_to "View products and order", business_products_path %>
 
 <% @businesses.each do |business|%> 
     <p><b>Business name:</b> 
@@ -7,6 +8,5 @@
     <% business.images.each do |i|%>
     <%= image_tag(i, style: "width: 300px; height: auto")%>
     <%end%><br><br>
-
 <%end%> 
 

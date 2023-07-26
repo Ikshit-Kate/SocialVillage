@@ -1,2 +1,57 @@
-<h1>BusinessProducts#index</h1>
-<p>Find me in app/views/business_products/index.html.erb</p>
+<%= (link_to "make new entry", new_business_product_path)%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<%= form_for @search, url: business_products_path, method: :get do |f| %>
+	<%= f.label :"Business name" %>
+  <%= f.text_field :business_name %>
+	<%= f.submit "Search"%>
+<% end %>
+
+
+<h2>Business Products</h2>
+
+<table>
+  <tr>
+    <th>name</th>
+    <th>brand</th>
+    <th>price</th>
+  </tr>
+
+
+    <% @businessproducts.each do |businessproduct|%> 
+    <tr>
+        <td> <%= businessproduct.name%>
+        <%= link_to "edit", edit_business_product_path(businessproduct)%>
+        <%= button_to "Delete", business_product_path(businessproduct), method: :delete %>
+        </td>
+        <td><%= businessproduct.brand%></td>
+        <td><%= businessproduct.price%></td>
+  </tr>
+  <%end%> 
+</table>
+
+</body>
+</html>
+

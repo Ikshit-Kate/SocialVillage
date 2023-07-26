@@ -40,7 +40,7 @@ tr:nth-child(even) {
         <td><%= broadcast.created_at.strftime('%H:%M:%S')%></td>
         <td> <%= broadcast.heading%>
         <%= link_to "edit", edit_broadcast_path(broadcast)%>
-        <%= button_to "Delete", broadcast_path(broadcast), method: :delete %>
+        <%= button_to "Delete", business_business_product_path(broadcast), method: :delete %>
         </td>
         <td><%= broadcast.body%></td>
   </tr>
