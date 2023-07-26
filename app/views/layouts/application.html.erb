@@ -33,9 +33,11 @@
           <%= link_to "Local authority", local_authorities_path %>
           <%= link_to "Events", events_path %>
           <%= link_to "Chat", rooms_path %>
-        
           <div class="topnav-right">
             <p align="right"><%= button_to "Sign out", destroy_user_session_path, method: :delete %> </p>
+          </div>
+          <div class="topnav-right">
+            <p align="right"><%= link_to "Edit Profile", edit_user_registration_path%> </p>
           </div>
         </div>
       <%end%>

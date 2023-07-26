@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_25_034300) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_26_063235) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_034300) do
     t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "business_products", force: :cascade do |t|
+    t.string "name"
+    t.string "brand"
+    t.decimal "price"
+    t.bigint "business_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_id"], name: "index_business_products_on_business_id"
   end
 
   create_table "businesses", force: :cascade do |t|
@@ -140,6 +150,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_034300) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "business_products", "businesses"
   add_foreign_key "businesses", "users"
   add_foreign_key "events", "users"
   add_foreign_key "messages", "rooms"

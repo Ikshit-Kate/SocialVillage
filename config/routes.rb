@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'business_products/index'
+  get 'business_products/edit'
+  get 'business_products/new'
  
   root 'homes#index'
   devise_for :users, controllers: { registrations: 'users/registrations' }
@@ -7,8 +10,12 @@ Rails.application.routes.draw do
   resources :local_authorities
   resources :broadcasts
   resources :events
+  
   resources :rooms do
     resources :messages
   end
-  resources :businesses
+
+  resources :businesses do
+    resources :business_products
+  end
 end

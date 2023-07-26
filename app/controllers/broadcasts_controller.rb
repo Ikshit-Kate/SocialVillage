@@ -10,12 +10,29 @@ class BroadcastsController < ApplicationController
   def create
     @broadcast = Broadcast.new(set_params)
     if @broadcast.save
-      # Handle successful save
       redirect_to  broadcasts_path, notice: 'Suggestion created successfully!'
     else
-      # Handle failed save
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @broadcast = Broadcast.find(params[:id])
+  end
+
+  def update
+    @broadcast = Broadcast.find(params[:id])
+    if @broadcast.update(set_params)
+      redirect_to broadcasts_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @broadcast = Broadcast.find(params[:id])
+    @broadcast.destroy
+    redirect_to broadcasts_path
   end
 
   private
