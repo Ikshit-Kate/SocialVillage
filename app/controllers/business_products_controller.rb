@@ -19,15 +19,15 @@ class BusinessProductsController < ApplicationController
   end
 
   def create
-    
     @businessproduct = BusinessProduct.new(set_params)
     @businessname = @businessproduct.business_name
 
     if @businessname.present?
-      @owner = Business.where(name: @businessname).take
+      @business = Business.where(name: @businessname).take
 
-      if @owner
-        @businessproduct.business_id = @owner.id
+      if @business
+        @businessproduct.business_id = @business.id
+        @owner = @business.user
       else
         flash.now[:alert] = 'User with the provided username not found.'
         render :new, status: :unprocessable_entity
@@ -38,11 +38,17 @@ class BusinessProductsController < ApplicationController
       render :new, status: :unprocessable_entity
       return
     end
-
-    if @businessproduct.save
-      redirect_to business_products_path
+    
+    if (@owner.id == current_user.id)
+      if @businessproduct.save
+        redirect_to business_products_path
+      else
+        render :new, status: :unprocessable_entity
+      end
     else
+      flash.now[:alert] = 'You can only add products to your business'
       render :new, status: :unprocessable_entity
+      return      
     end
   end
 

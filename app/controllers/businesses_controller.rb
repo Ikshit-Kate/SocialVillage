@@ -40,6 +40,7 @@ class BusinessesController < ApplicationController
 
   def show
     @business = Business.find(params[:id])
+    @review = @business.reviews.build
   end
 
   def update

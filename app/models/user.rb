@@ -15,4 +15,5 @@ class User < ApplicationRecord
   has_one :room
   has_many :businesses
   has_many :events
+  has_many :orders
 end

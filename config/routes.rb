@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resources :local_authorities
   resources :broadcasts
   resources :events
-  resources :businesses
+  
+  resources :businesses do
+    resources :reviews
+  end
+
   resources :business_products
   resources :orders
   
