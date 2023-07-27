@@ -21,6 +21,159 @@ color: rgb(255, 255, 255);
 background-color: #f6f5f5;
 color: black;
 }
+
+/* app/assets/stylesheets/application.scss */
+
+.suggestion-box {
+  background-color: #f9f9f9; /* Light gray background */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+  font-family: "Arial", sans-serif; /* Change the font family as desired */
+  font-size: 24px;
+  color: #333; /* Text color */
+  margin-bottom: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical; /* Allow vertical resizing of the textarea */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: "Arial", sans-serif; /* Change the font family as desired */
+  font-size: 16px;
+}
+
+input[type="submit"] {
+  background-color: #20c997; /* Blue submit button */
+  color: #fff; /* White text */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.all-suggestions-link {
+  display: block;
+  text-align: center;
+  font-family: "Arial", sans-serif; /* Change the font family as desired */
+  font-size: 16px;
+  color: #007bff; /* Blue link color */
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+
+/* app/assets/stylesheets/application.scss */
+
+.center {
+  text-align: center;
+}
+
+.location-list {
+  list-style: none;
+  padding: 0;
+}
+
+.location-list li {
+  margin-bottom: 8px;
+}
+ul {
+  overflow: hidden;
+}
+ul li {
+  width: 25%;
+  float: left;
+}
+
+.location-list li span {
+  display: inline-block;
+  background-color: #f2f2f2;
+  padding: 6px 12px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+}
+
+.location-list li span sup {
+  vertical-align: super;
+  font-size: 12px;
+}
+
+
+
+.image-container {
+  position: relative;
+  width: 1280px; 
+  height: 600px;
+}
+
+#image-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for better visibility */
+  padding: 10px 20px;
+}
+
+
+#header-image-menu {
+  position: relative;
+  width: 1280px; 
+  height: 600px;
+  margin-bottom: 250px;
+}
+
+#image-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 70px; 
+  font-weight: bold;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  padding: 10px 20px; /* Add padding to create the box around the text */
+  border-radius: 10px;
+}
+
+.round-frame {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 10px solid white; /* White border */
+}
+
+.round-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 // body {
 //     overflow: hidden;
 //   }

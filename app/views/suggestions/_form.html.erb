@@ -1,0 +1,10 @@
+<div class="suggestion-box">
+  <h3>Suggestion Box</h3>
+  <%= form_with url: suggestions_path do |f| %>
+    <%= f.text_area :suggestion_body, size: "100x10", placeholder: "Enter your suggestion here..." %>
+    <%= f.submit "Submit" %>
+  <% end %>
+  <% if current_user.role == "secretary" %>
+    <%= link_to "All suggestions", suggestions_path, class: "all-suggestions-link" %>
+  <% end %>
+</div>

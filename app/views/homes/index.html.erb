@@ -1,92 +1,61 @@
-<% if user_signed_in? %> 
-
-   <div> Welcome <%= current_user.email %> </div> 
-  
-  <!DOCTYPE html>
-  <!-- Header Menu of the Page -->
+<% if user_signed_in? %>
   <header>
-  <!-- Top header menu containing
-  logo and Navigation bar -->
-  <div id="top-header">
-  <!-- Logo -->
-  <div id="logo">
- 
-
-  <!-- Image menu in Header to contain an Image and
-  a sample text over that image -->
-  <div id="header-image-menu">
-  <h2 id="image-text">
-  Karol Bagh Grand
-  </h2>
-  </div>
+    <div id="header-image-menu">
+      <h2 id="image-text">Karol Bagh Grand</h2>
+      <%= image_tag('KBGcover.png', alt: 'Image of Karol Bagh Grand', width: '1280', height: '600') %>
+      <div class="round-frame">
+        <img src="https://www.kbginfra.com/project/kbg-grand_bhavrasla_indore/kbg-grand_icon.jpg" alt="Round Frame Image" width="200" height="200">
+      </div>
+    </div>
   </header>
 
-  <img src="https://www.kbginfra.com/project/kbg-grand_bhavrasla_indore/kbg-grand_cover.jpg" alt="Girl in a jacket" width="1280" height="600">
 
- 
-  <p>Karol Bagh Grand is one of the largest creation of apartments in M.P. by the K.B.G. Group. 
-  Having 900 apartments in various sizes, with beautiful British Elevation and gorgeous pillars, 
-  you would be mesmerized as you enter the British look main entrance. 
-  The township has perfect layout and supplemented with all luxury amenities along with a lifestyle Grand Club. 
-  Exotic and colorful Library, mind relaxing Yoga and Aerobics Hall with beautiful Interior and Soothing Music, 
-  Mind-blowing Guest Room with complete facilities, Gorgeous Multi Faith Temple, 
+  <p class="beautiful-text">
+  Karol Bagh Grand is one of the largest creations of apartments in M.P. by the K.B.G. Group.
+  Having 900 apartments in various sizes, with beautiful British Elevation and gorgeous pillars,
+  you would be mesmerized as you enter the British look main entrance.
+  The township has a perfect layout and is supplemented with all luxury amenities along with a lifestyle Grand Club.
+  Exotic and colorful Library, mind relaxing Yoga and Aerobics Hall with beautiful Interior and Soothing Music,
+  Mind-blowing Guest Room with complete facilities, Gorgeous Multi Faith Temple,
   Exclusive Party Lawn supplemented with Stage and Gazebos are a few added features of Karol Bagh Grand, along with other common facilities.
-
-  A Grand Club House inside the township with 24 seater Home Theater, 
-  25m Swimming Pool and Kids Pool, Grand Gymnasium, 
-  Table Tennis & Carom & Chess Room and many more unexpected facilities is an attractive feature of this township. 
-  Vatican City like dome on the Club House brings added beauty to the whole township. 
-  In short, the township is so attractive that no one would go without pleasing a word for it.<p>
-  <center><h2>Fly Through</h2></center>
-  <center><iframe width="560" height="315" src="https://www.youtube.com/embed/CSeLldlrQgU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br></center>
-  
-  <br><p><center><h2>Location Benefits</h2></center>
-  <ul style="list-style-type:square;">
-  <style>li {
-  float: left;
-  margin: 0 20px;
-}
-</style>
-<li>0<sup>KM</sup> Temple</li>
-<li>1<sup>KM</sup> Metro Station</li>
-<li>1<sup>KM</sup> Police Station</li>
-<li>1<sup>KM</sup> School</li><br><br>
-<li>1<sup>KM</sup> Bus Terminal</li>
-<li>1<sup>KM</sup> College</li>
-<li>2<sup>KM</sup> TCS & Infosys</li>
-<li>3<sup>KM</sup> Railway Station</li><br><br>
-<li>4<sup>KM</sup> Convention Center</li>
-<li>5<sup>KM</sup> 5 Star Hotel</li>
-<li>5<sup>KM</sup> Mall</li>
-<li>10<sup>KMS</sup> Airport</li>
-</ul>
-
-
+  A Grand Club House inside the township with 24 seater Home Theater,
+  25m Swimming Pool and Kids Pool, Grand Gymnasium,
+  Table Tennis & Carom & Chess Room and many more unexpected facilities are attractive features of this township.
+  Vatican City-like dome on the Club House brings added beauty to the whole township.
+  In short, the township is so attractive that no one would go without pleasing a word for it.
 </p>
 
+  <center><h2>Fly Through</h2></center>
+  <center>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/CSeLldlrQgU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </center>
 
-  <br><br><center><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3678.197812156133!2d75.85138197457283!3d22.7951330293338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3963030070dd17bf%3A0xad02917ea06a7b70!2sKarol%20Bagh%2C%20Bhawrasla%2C%20Indore%2C%20Madhya%20Pradesh%20453555!5e0!3m2!1sen!2sin!4v1689659237121!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></center>
+  <br>
+  <p>
+    <center>
+  <h2>Location Benefits</h2>
+  </center>
+  <ul class="location-list">
+    <li><span>0<sup>KM</sup> Temple</span></li>
+    <li><span>1<sup>KM</sup> Metro Station</span></li>
+    <li><span>1<sup>KM</sup> Police Station</span></li>
+    <li><span>1<sup>KM</sup> School</span></li>
+    <li><span>1<sup>KM</sup> Bus Terminal</span></li>
+    <li><span>1<sup>KM</sup> College</span></li>
+    <li><span>2<sup>KM</sup> TCS & Infosys</span></li>
+    <li><span>3<sup>KM</sup> Railway Station</span></li>
+    <li><span>4<sup>KM</sup> Convention Center</span></li>
+    <li><span>5<sup>KM</sup> 5 Star Hotel</span></li>
+    <li><span>5<sup>KM</sup> Mall</span></li>
+    <li><span>10<sup>KMS</sup> Airport</span></li>
+  </ul>
+    <br>
+  <center>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3678.197812156133!2d75.85138197457283!3d22.7951330293338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3963030070dd17bf%3A0xad02917ea06a7b70!2sKarol%20Bagh%2C%20Bhawrasla%2C%20Indore%2C%20Madhya%20Pradesh%20453555!5e0!3m2!1sen!2sin!4v1689659237121!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </center>
 
-  <h3>Suggestion Box</h3>
-  <%= form_with url: suggestions_path do |f| %>
-        <%= f.text_area :suggestion_body, size: "100x10" %>
-        <%= f.submit%>
-  <% end %>
-  <%= (link_to "All suggestions",  suggestions_path) if (current_user.role == "secretary") %>
-    
-
-
-
-
-
-
-
-
-
-
-
-
+  <%= render partial: 'suggestions/form' %>
 
 <% else %>
-  <%= button_to "Sign in", new_user_session_path %> 
+  <%= button_to "Sign in", new_user_session_path %>
 <% end %>
