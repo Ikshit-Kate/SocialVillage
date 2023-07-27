@@ -27,6 +27,10 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
+    @comment = Comment.new
+    @comments = @event.comments
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, alert: "Event not found."
     if @event.update(set_params)
       redirect_to @event
     else

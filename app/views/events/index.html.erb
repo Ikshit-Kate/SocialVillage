@@ -4,11 +4,7 @@
 <% @events.each do |event|%> 
     <%= event.user.username%>
     <p><b>Event name:</b> 
-    <%if event.user_id == current_user.id%>
-        <%= link_to event.event_name, event%>
-    <%else%>
-        <%=event.event_name%></p>
-    <%end%>
+   	 <%= link_to event.event_name, event%>
     <p><b>Caption:</b> <%=  event.caption %></p>
     <% event.images.each do |i|%>
     <%= image_tag(i, style: "width: 300px; height: auto")%>

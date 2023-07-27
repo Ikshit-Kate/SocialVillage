@@ -12,7 +12,7 @@ class User < ApplicationRecord
   after_create_commit { broadcast_append_to 'users' }
         
   has_many :messages, dependent: :destroy
-  has_one :room
+  has_one :room, dependent: :destroy
   has_many :businesses
   has_many :events
   has_many :orders

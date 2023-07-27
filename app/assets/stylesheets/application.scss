@@ -1,11 +1,11 @@
 .topnav{
     overflow: hidden;
-    background-color: #333;
+    background-color: #f6f5f5;
 }
 
 .topnav a {
 float: left;
-color: #f2f2f2;
+color: #000000;
 text-align: center;
 padding: 14px 16px;
 text-decoration: none;
@@ -14,11 +14,11 @@ font-size: 17px;
 
 .topnav a:hover {
 background-color: #ddd;
-color: black;
+color: rgb(255, 255, 255);
 }
 
 .topnav a.active {
-background-color: #c9c9ff;
+background-color: #f6f5f5;
 color: black;
 }
 // body {

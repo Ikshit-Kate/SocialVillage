@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   resources :suggestions
   resources :local_authorities
   resources :broadcasts
-  resources :events
+  
+  resources :events do
+    resources :comments
+  end
   
   resources :businesses do
     resources :reviews

@@ -1,4 +1,4 @@
-<%= (link_to "Register a new busines", new_business_path) if (current_user.role == "secretary")%><br><br>
+<%= (link_to "Register a new business", new_business_path) if (current_user.role == "secretary")%><br><br>
 <%= link_to "View products and order", business_products_path %>
 
 <% @businesses.each do |business|%> 
