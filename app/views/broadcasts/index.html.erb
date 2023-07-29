@@ -2,31 +2,37 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+  <title>Broadcasts</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
 <body>
-  <h2>Broadcasts</h2><small>Society members recieve a mail with the broadcast everytime it is made or updated.</small>
+  <div class="container mt-4">
+    <h2>Broadcasts</h2>
+    <small>Society members receive a mail with the broadcast every time it is made or updated.</small>
   
-  <table class="broadcasts-table">
-    <tr>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Heading</th>
-      <th>Message</th>
-    </tr>
-
-    <% @broadcasts.each do |broadcast| %>
-    <tr>
-      <td><%= broadcast.created_at.to_date %></td>
-      <td><%= broadcast.created_at.in_time_zone('New Delhi').strftime('%I:%M %p') %></td>
-      <td>
-        <%= broadcast.heading %>
-        <%if current_user.secretary?%>
-          <%= link_to "Edit", edit_broadcast_path(broadcast) %>
-          <%= button_to "Delete", broadcast_path(broadcast), method: :delete, class: "delete-button" %>
-        <%end%>
-      </td>
-      <td><%= broadcast.body %></td>
-    </tr>
-    <% end %>
-  </table>
+    <div class="row mt-3">
+      <% @broadcasts.each do |broadcast| %>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-header">
+              <%= broadcast.created_at.to_date %>
+              <span class="float-right"><%= broadcast.created_at.in_time_zone('New Delhi').strftime('%I:%M %p') %></span>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= broadcast.heading %></h5>
+              <p class="card-text"><%= broadcast.body %></p>
+            </div>
+            <% if current_user.secretary? %>
+              <div class="card-footer">
+                <%= link_to "Edit", edit_broadcast_path(broadcast), class: "btn btn-primary btn-sm mr-2" %>
+                <%= button_to "Delete", broadcast_path(broadcast), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: 'Are you sure you want to delete this broadcast?' } %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </body>
 </html>

@@ -2,44 +2,38 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <style>
-            table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-            }
-
-            td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-            }
-
-            tr:nth-child(even) {
-            background-color: #dddddd;
-            }
-        </style>
-    </head>
-    <body>
-        <h2>Local Authorities</h2>
-        <table>
-            <tr>
-                <th>Department</th>
-                <th>Name</th>
-                <th>SOS</th>
-            </tr>
-            <% @local_authorities.each do |authority|%> 
-            <tr>
-                <td><%= authority.department%></td>
-                <td><%= link_to authority.name, authority%></td>
-                <td>
-                    <%= button_to 'SOS', sos_path, method: :post, params:{email: authority.email}, class: "delete-button" %>
-                </td>
-            </tr>
-            <%end%> 
-
-        </table>
-    </body>
+<head>
+  <title>Local Authorities</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .btn-sos {
+      background-color: #FF0000; 
+      color: #FFFFFF; 
+      border-color: #FF0000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-4">
+    <h2>Local Authorities</h2>
+    <div class="row mt-3">
+      <% @local_authorities.each do |authority| %>
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-header">
+              <%= authority.department %>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to authority.name, authority %></h5>
+              <p class="card-text">Email: <%= authority.email %></p>
+            </div>
+            <div class="card-footer">
+              <%= button_to 'SOS', sos_path, method: :post, params: { email: authority.email }, class: "btn btn-sos btn-sm" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</body>
 </html>
-

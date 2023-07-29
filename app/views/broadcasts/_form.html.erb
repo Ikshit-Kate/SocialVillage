@@ -1,9 +1,32 @@
-<%= form_with model: @broadcast do |form| %>
+<%= stylesheet_link_tag 'custom_forms', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-    <%= form.label :heading%> 
-    <%= form.text_field :heading%><br>
-    <%= form.label :body%> 
-    <%= form.text_area :body%><br>
-    <%= form.submit%>
-<%end%>
- 
+
+<div class="form-wrapper">
+  <%= form_with model: @broadcast do |form| %>
+    <div class="container">
+      <div class="text">
+        New Broadcast
+      </div>
+      <div class="form-row">
+        <div class="input-data">
+          <%= form.text_field :heading, required: true %>
+          <div class="underline"></div>
+          <label for="broadcast_heading">Heading</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-data textarea">
+          <%= form.text_area :body, required: true %>
+          <div class="underline"></div>
+          <label for="broadcast_body">Body</label>
+        </div>
+      </div>
+      <div class="form-row submit-btn">
+        <div class="input-data">
+          <div class="inner"></div>
+          <%= form.submit "Submit" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

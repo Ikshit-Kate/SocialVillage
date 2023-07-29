@@ -1,0 +1,50 @@
+<%= stylesheet_link_tag 'custom_forms', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+
+<div class="form-wrapper">
+  <%= form_with model: @local_authority do |form| %>
+    <div class="container">
+      <div class="text">
+        Register New Local Authority
+      </div>
+      <div class="form-row">
+        <div class="input-data">
+          <%= form.text_field :department, required: true %>
+          <div class="underline"></div>
+          <label for="local_authority_department">Department</label>
+        </div>
+        <div class="input-data">
+          <%= form.text_field :name, required: true %>
+          <div class="underline"></div>
+          <label for="local_authority_name">Name</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-data">
+          <%= form.text_field :email, required: true %>
+          <div class="underline"></div>
+          <label for="local_authority_email">Email Address</label>
+        </div>
+        <div class="input-data">
+          <%= form.text_field :address, required: true %>
+          <div class="underline"></div>
+          <label for="local_authority_address">Address</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-data">
+          <%= form.number_field :contact_number, required: true %>
+          <div class="underline"></div>
+          <label for="local_authority_contact_number">Contact Number</label>
+        </div>
+      </div>
+      <div class="form-row submit-btn">
+        <div class="input-data">
+          <div class="inner"></div>
+          <%= form.submit "Submit" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+

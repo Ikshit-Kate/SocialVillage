@@ -1,17 +1,40 @@
-<p><b>Department:</b> <%= @local_authority.department%></p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Local Authority Details</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .info-item {
+      margin-bottom: 10px;
+    }
 
-<p><b>name:</b> <%= @local_authority.name%></p>
+    .edit-btn {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-4">
+    <div class="info-item">
+      <b>Department:</b> <%= @local_authority.department %>
+    </div>
+    <div class="info-item">
+      <b>Name:</b> <%= @local_authority.name %>
+    </div>
+    <div class="info-item">
+      <b>Contact Number:</b> <%= @local_authority.contact_number %>
+    </div>
+    <div class="info-item">
+      <b>Email:</b> <%= @local_authority.email %>
+    </div>
+    <div class="info-item">
+      <b>Address:</b> <%= @local_authority.address %>
+    </div>
 
-<p><b>contact_number:</b> <%= @local_authority.contact_number%></p>
-
-<p><b>email:</b> <%= @local_authority.email%></p>
-
-<p><b>address:</b> <%= @local_authority.address%></p>
-
-
-
-
-
-
-<%= link_to "edit", edit_local_authority_path%>
-<%= button_to "Delete", local_authority_path, method: :delete %>
+    <% if current_user.secretary? %>
+      <%= link_to "Edit", edit_local_authority_path(@local_authority), class: "btn btn-primary edit-btn" %>
+      <%= button_to "Delete", local_authority_path(@local_authority), method: :delete, data: { confirm: 'Are you sure you want to delete this local authority?' }, class: "btn btn-danger" %>
+    <% end %>
+  </div>
+</body>
+</html>

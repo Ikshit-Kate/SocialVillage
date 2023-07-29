@@ -1,6 +1,6 @@
 
 class LocalAuthoritiesController < ApplicationController
-
+  before_action :find_authority, only: %i[show edit update destroy]
 
   def index
     @local_authorities = LocalAuthority.all
@@ -20,15 +20,12 @@ class LocalAuthoritiesController < ApplicationController
   end
 
   def edit
-    @local_authority = LocalAuthority.find(params[:id])
   end
 
   def show
-    @local_authority = LocalAuthority.find(params[:id])
   end
 
   def update
-    @local_authority = LocalAuthority.find(params[:id])
     if @local_authority.update(set_params)
       redirect_to @local_authority
     else
@@ -37,7 +34,6 @@ class LocalAuthoritiesController < ApplicationController
   end
 
   def destroy
-    @local_authority = LocalAuthority.find(params[:id])
     @local_authority.destroy
     redirect_to local_authorities_path
   end
@@ -51,6 +47,10 @@ class LocalAuthoritiesController < ApplicationController
 
 
   private
+
+  def find_authority
+    @local_authority = LocalAuthority.find(params[:id])
+  end
 
   def set_params
     params.require(:local_authority).permit(:name, :contact_number, :address, :department, :email)

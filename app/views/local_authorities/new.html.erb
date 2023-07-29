@@ -1,16 +1,1 @@
-<%= form_with model: @local_authority do |form| %>
-
-    <%= form.label :department%> 
-    <%= form.text_field :department%><br>
-    <%= form.label :name%> 
-    <%= form.text_field :name%><br>
-    <%= form.label :contact_number%> 
-    <%= form.number_field :contact_number%><br>
-    <%= form.label :email%> 
-    <%= form.text_field :email%><br>
-    <%= form.label :address%> 
-    <%= form.text_field :address%><br>
-
-    <%= form.submit%>
-<%end%>
- 
+<%=render partial: 'form'%>
