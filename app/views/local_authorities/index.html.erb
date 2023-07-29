@@ -1,4 +1,4 @@
-<%= (link_to "make new entry", new_local_authority_path) if (current_user.role == "secretary")%><br><br>
+<%= link_to "Make New Entry", new_local_authority_path, class: "new-entry-link" if current_user.secretary? %><br><br>
 
 <!DOCTYPE html>
 <html>
@@ -27,11 +27,15 @@
             <tr>
                 <th>Department</th>
                 <th>Name</th>
+                <th>SOS</th>
             </tr>
             <% @local_authorities.each do |authority|%> 
             <tr>
                 <td><%= authority.department%></td>
                 <td><%= link_to authority.name, authority%></td>
+                <td>
+                    <%= button_to 'SOS', sos_path, method: :post, params:{email: authority.email}, class: "delete-button" %>
+                </td>
             </tr>
             <%end%> 
 

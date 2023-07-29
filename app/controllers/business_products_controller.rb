@@ -6,13 +6,12 @@ class BusinessProductsController < ApplicationController
   def index
     if params[:business_product].present?
       @search = BusinessProduct.new(business_name: params[:business_product][:business_name])
-      @businessproducts = BusinessProduct.where(business_name: @search.business_name) 
+      @businessproducts = BusinessProduct.where(business_name: @search.business_name)
     else
       @search = BusinessProduct.new
       @businessproducts = BusinessProduct.all
     end
   end
-  
 
   def new
     @businessproduct = BusinessProduct.new
@@ -38,8 +37,8 @@ class BusinessProductsController < ApplicationController
       render :new, status: :unprocessable_entity
       return
     end
-    
-    if (@owner.id == current_user.id)
+
+    if @owner.id == current_user.id
       if @businessproduct.save
         redirect_to business_products_path
       else
@@ -48,7 +47,7 @@ class BusinessProductsController < ApplicationController
     else
       flash.now[:alert] = 'You can only add products to your business'
       render :new, status: :unprocessable_entity
-      return      
+      nil
     end
   end
 
@@ -59,7 +58,7 @@ class BusinessProductsController < ApplicationController
   def update
     @businessproduct = BusinessProduct.find(params[:id])
     if @businessproduct.update(set_params)
-      redirect_to  business_products_path 
+      redirect_to business_products_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -68,7 +67,7 @@ class BusinessProductsController < ApplicationController
   def destroy
     @businessproduct = BusinessProduct.find(params[:id])
     @businessproduct.destroy
-    redirect_to  business_products_path 
+    redirect_to business_products_path
   end
 
   private
@@ -77,4 +76,3 @@ class BusinessProductsController < ApplicationController
     params.require(:business_product).permit(:name, :brand, :price, :business_name)
   end
 end
-

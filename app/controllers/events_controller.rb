@@ -1,3 +1,4 @@
+
 class EventsController < ApplicationController
   def index
     @events = Event.all
@@ -30,7 +31,7 @@ class EventsController < ApplicationController
     @comment = Comment.new
     @comments = @event.comments
   rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, alert: "Event not found."
+    redirect_to root_path, alert: 'Event not found.'
     if @event.update(set_params)
       redirect_to @event
     else

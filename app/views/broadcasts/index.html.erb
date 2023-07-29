@@ -1,49 +1,10 @@
-<%= link_to "Make New Entry", new_broadcast_path, class: "new-entry-link" if current_user.role == "secretary" %><br><br>
+<%= link_to "Make New Entry", new_broadcast_path, class: "new-entry-link" if current_user.secretary? %><br><br>
 
 <!DOCTYPE html>
 <html>
-<head>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-
-    .broadcasts-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-
-    .broadcasts-table th, .broadcasts-table td {
-      border: 1px solid #dddddd;
-      padding: 8px;
-    }
-
-    .broadcasts-table th {
-      background-color: #f2f2f2;
-      text-align: left;
-    }
-
-    .broadcasts-table tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-
-    .new-entry-link {
-      background-color: #007bff;
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 16px;
-      border-radius: 4px;
-    }
-
-    .new-entry-link:hover {
-      background-color: #0056b3;
-    }
-  </style>
-</head>
 <body>
-  <h2>Broadcasts</h2>
-
+  <h2>Broadcasts</h2><small>Society members recieve a mail with the broadcast everytime it is made or updated.</small>
+  
   <table class="broadcasts-table">
     <tr>
       <th>Date</th>
@@ -55,11 +16,13 @@
     <% @broadcasts.each do |broadcast| %>
     <tr>
       <td><%= broadcast.created_at.to_date %></td>
-      <td><%= broadcast.created_at.strftime('%H:%M:%S') %></td>
+      <td><%= broadcast.created_at.in_time_zone('New Delhi').strftime('%I:%M %p') %></td>
       <td>
         <%= broadcast.heading %>
-        <%= link_to "Edit", edit_broadcast_path(broadcast) %>
-        <%= button_to "Delete", broadcast_path(broadcast), method: :delete, class: "delete-button" %>
+        <%if current_user.secretary?%>
+          <%= link_to "Edit", edit_broadcast_path(broadcast) %>
+          <%= button_to "Delete", broadcast_path(broadcast), method: :delete, class: "delete-button" %>
+        <%end%>
       </td>
       <td><%= broadcast.body %></td>
     </tr>

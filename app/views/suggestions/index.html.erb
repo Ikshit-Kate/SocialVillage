@@ -1,9 +1,21 @@
-<b><i>Suggestions</b></i><br><br>
 
-<% @suggestions.each do |suggestion|%> 
-<b>User name:</b>   <%= suggestion.user.username %><br>
-<b>Suggestion:</b>  <%= suggestion.suggestion_body%><br>
-<b>Date:</b>        <%= suggestion.created_at.to_date %><br>
-<b>Time:</b>        <%= suggestion.created_at.strftime('%H:%M:%S') %><br><br>
+<h2>Suggestions</h2>
+  
+  <table class="broadcasts-table">
+    <tr>
+      <th>User name</th>
+      <th>Suggestion</th>
+      <th>Date</th>
+      <th>Time</th>
+    </tr>
 
-<%end%> 
+    <% @suggestions.each do |suggestion| %>
+    <tr>
+    <td><%= suggestion.user.username %></td>
+      <td><%= suggestion.suggestion_body %></td>
+      <td><%= suggestion.created_at.to_date %></td>
+      <td><%= suggestion.created_at.in_time_zone('New Delhi').strftime('%I:%M %p') %></td>
+    </tr>
+    <% end %>
+  </table>
+

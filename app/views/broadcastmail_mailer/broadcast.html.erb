@@ -1,0 +1,4 @@
+<b>Date:</b>  <td><%= @broadcast.created_at.to_date %></td><br>
+<b>Time:</b>  <td><%= @broadcast.created_at.in_time_zone('New Delhi').strftime('%I:%M %p') %></td><br>
+<b>Heading:</b>  <td><%= @broadcast.heading %></td><br>
+<b>Body:</b>  <td><%= @broadcast.body %></td>

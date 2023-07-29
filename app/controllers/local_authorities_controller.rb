@@ -1,4 +1,7 @@
+
 class LocalAuthoritiesController < ApplicationController
+
+
   def index
     @local_authorities = LocalAuthority.all
   end
@@ -38,6 +41,14 @@ class LocalAuthoritiesController < ApplicationController
     @local_authority.destroy
     redirect_to local_authorities_path
   end
+
+  def send_sos
+    authority_email = params[:email]
+    user = current_user
+    SosMailer.send_sos(authority_email, user).deliver_now
+    redirect_to local_authorities_path, notice: 'SOS sent to the authority'
+  end 
+
 
   private
 

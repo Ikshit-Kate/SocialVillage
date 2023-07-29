@@ -1,6 +1,6 @@
 class SuggestionsController < ApplicationController
   def index
-    @suggestions = Suggestion.all
+    @suggestions = Suggestion.all.order(created_at: :desc)
   end
 
   def new
