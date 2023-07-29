@@ -1,5 +1,6 @@
-
 class BusinessesController < ApplicationController
+  before_action :find_business, only: %i[show edit update destroy]
+
   def index
     @businesses = Business.all
   end
@@ -36,16 +37,13 @@ class BusinessesController < ApplicationController
   end
 
   def edit
-    @business = Business.find(params[:id])
   end
 
   def show
-    @business = Business.find(params[:id])
     @review = @business.reviews.build
   end
 
   def update
-    @business = Business.find(params[:id])
     if @business.update(set_params)
       redirect_to @business
     else
@@ -54,12 +52,15 @@ class BusinessesController < ApplicationController
   end
 
   def destroy
-    @business = Business.find(params[:id])
     @business.destroy
     redirect_to businesses_path
   end
 
   private
+
+  def find_business
+    @business = Business.find(params[:id])
+  end
 
   def set_params
     params.require(:business).permit(:name, :email, :contact_number, :address, :owner_username, images: [])

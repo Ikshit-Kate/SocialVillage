@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = @business.reviews.find(params[:id])
+    @review = @business.reviews.find_by(id: params[:id])
     @review.destroy
     redirect_to @business, notice: 'Review successfully deleted.'
   end
@@ -35,7 +35,7 @@ class ReviewsController < ApplicationController
   def find_business
     @business = Business.find(params[:business_id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, alert: 'Business not found.'
+    redirect_to @business, alert: 'Business not found.'
   end
 
   def review_params

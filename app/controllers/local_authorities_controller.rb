@@ -1,4 +1,3 @@
-
 class LocalAuthoritiesController < ApplicationController
   before_action :find_authority, only: %i[show edit update destroy]
 
@@ -19,11 +18,9 @@ class LocalAuthoritiesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
-  def show
-  end
+  def show; end
 
   def update
     if @local_authority.update(set_params)
@@ -43,8 +40,7 @@ class LocalAuthoritiesController < ApplicationController
     user = current_user
     SosMailer.send_sos(authority_email, user).deliver_now
     redirect_to local_authorities_path, notice: 'SOS sent to the authority'
-  end 
-
+  end
 
   private
 

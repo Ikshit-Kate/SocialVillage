@@ -1,4 +1,3 @@
-
 class CommentsController < ApplicationController
   before_action :find_event
   before_action :find_comment, only: %i[edit update destroy]

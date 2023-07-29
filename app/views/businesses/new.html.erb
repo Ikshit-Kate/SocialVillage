@@ -1,17 +1,1 @@
-<%= form_with model: @business do |form| %>
-
-    <%= form.label :owner_username%> 
-    <%= form.text_field :owner_username%><br>
-    <%= form.label :name%> 
-    <%= form.text_field :name%><br>
-    <%= form.label :email%> 
-    <%= form.text_field :email%><br>
-    <%= form.label :contact_number%> 
-    <%= form.number_field :contact_number%><br>
-    <%= form.label :address%> 
-    <%= form.text_field :address%><br>
-    <%= form.label :images%> 
-    <%= form.file_field :images, multiple: true%><br>
-
-    <%= form.submit%>
-<%end%>
+<%=render partial: 'form'%>

@@ -20,7 +20,7 @@
               <span class="float-right"><%= broadcast.created_at.in_time_zone('New Delhi').strftime('%I:%M %p') %></span>
             </div>
             <div class="card-body">
-              <h5 class="card-title"><%= broadcast.heading %></h5>
+              <h5 class="card-title"><strong><%= broadcast.heading %></strong></h5>
               <p class="card-text"><%= broadcast.body %></p>
             </div>
             <% if current_user.secretary? %>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :suggestions
   resources :local_authorities
   resources :broadcasts
-  post '/local_authorities/send_sos', to: "local_authorities#send_sos", as: 'sos'
+  post '/local_authorities/send_sos', to: 'local_authorities#send_sos', as: 'sos'
 
   resources :events do
     resources :comments

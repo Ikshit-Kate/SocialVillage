@@ -1,0 +1,36 @@
+  .business-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .business-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .business-number {
+    font-size: 16px;
+    color: #888;
+  }
+
+  .business-image {
+    max-width: 300px;
+    height: auto;
+    margin-top: 10px;
+  }
+  .business-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .business-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+

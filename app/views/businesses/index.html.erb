@@ -1,12 +1,50 @@
-<%= (link_to "Register a new business", new_business_path) if (current_user.role == "secretary")%><br><br>
-<%= link_to "View products and order", business_products_path %>
+<%= link_to "Register a new business", new_business_path, class: "new-entry-link" if current_user.secretary? %><br><br>
+<style>
+  .business-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
 
-<% @businesses.each do |business|%> 
-    <p><b>Business name:</b> 
-    <%= link_to business.name, business%>
-    <p><b>Number:</b> <%=  business.email %></p>
-    <% business.images.each do |i|%>
-    <%= image_tag(i, style: "width: 300px; height: auto")%>
-    <%end%><br><br>
-<%end%> 
+  .business-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .business-number {
+    font-size: 16px;
+    color: #888;
+  }
+
+  .business-image {
+    max-width: 300px;
+    height: auto;
+    margin-top: 10px;
+  }
+  .view_order {
+  background-color: #6495ED;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 0px;
+}
+</style>
+
+<div class="business-list">
+  <%= link_to "View products and order", business_products_path, class: "view_order" %><br><br>
+
+  <% @businesses.each do |business| %>
+    <div class="business-card">
+      <p class="business-name"><b>Business name:</b> <%= link_to business.name, business %></p>
+      <p class="business-number"><b>Number:</b> <%= business.contact_number %></p>
+
+      <% business.images.each do |image| %>
+        <%= image_tag image, class: "business-image" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 

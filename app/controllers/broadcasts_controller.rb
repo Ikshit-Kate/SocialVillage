@@ -1,6 +1,6 @@
 class BroadcastsController < ApplicationController
   before_action :find_broadcast, only: %i[edit update destroy]
-  
+
   def index
     @broadcasts = Broadcast.all.order(created_at: :desc)
   end

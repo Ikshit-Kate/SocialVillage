@@ -1,0 +1,59 @@
+<%= stylesheet_link_tag 'custom_forms', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+<div class="form-wrapper">
+  <%= form_with model: @business do |form| %>
+    <div class="container">
+      <div class="text">
+        New Business
+      </div>
+      <div class="form-row">
+        <div class="input-data">
+          <%= form.label :owner_username %>
+          <%= form.text_field :owner_username, required: true %>
+          <div class="underline"></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-data">
+          <%= form.label :name %>
+          <%= form.text_field :name, required: true %>
+          <div class="underline"></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-data">
+          <%= form.label :email %>
+          <%= form.text_field :email, required: true %>
+          <div class="underline"></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-data">
+          <%= form.label :contact_number %>
+          <%= form.number_field :contact_number %>
+          <div class="underline"></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-data">
+          <%= form.label :address %>
+          <%= form.text_field :address %>
+          <div class="underline"></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-data">
+          <%= form.label :images, "." %>
+          <%= form.file_field :images, multiple: true %>
+          <div class="underline"></div>
+        </div>
+      </div>
+      <div class="form-row submit-btn">
+        <div class="input-data">
+          <div class="inner"></div>
+          <%= form.submit "Submit" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
