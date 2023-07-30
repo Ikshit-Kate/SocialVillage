@@ -1,33 +1,53 @@
-<p><b>Event name:</b> <%= @event.event_name%></p>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    #comments-list li {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-4">
+    <p><b>Event name:</b> <%= @event.event_name %></p>
 
-<p><b>Caption:</b> <%= @event.caption%></p>
+    <p><b>Caption:</b> <%= @event.caption %></p>
 
-<% @event.images.each do |i|%>
-    <%= image_tag(i, style: "width: 300px; height: auto")%>
-<%end%>
+    <% @event.images.each do |i| %>
+      <%= image_tag(i, class: "img-fluid", style: "width: 300px; height: auto") %>
+    <% end %>
 
+    <% if @event.user_id == current_user.id %>
+      <br>
+      <%= link_to "Edit", edit_event_path(@event), class: "btn btn-primary" %>
+      <%= button_to "Delete", event_path(@event), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to delete this event?" } %>
+    <% end %>
 
-<%if @event.user_id == current_user.id%>
- <br> <%= link_to "edit", edit_event_path%>
-  <%= button_to "Delete", event_path, method: :delete %>
-<%end%>
+    <h3>Leave a comment</h3>
+    <%= render 'comments/form' %>
 
-<h3>Leave a comment</h3>
-<%= render 'comments/form' %>
+    <h3>Comments</h3>
+    <ul id="comments-list">
+      <% @event.comments.each do |comment| %>
+        <li>
+          <strong><%= comment.user.username %></strong> - <%= time_ago_in_words(comment.created_at) %>
+          <p><%= comment.comment %></p>
 
-<h3>Comments</h3>
-<ul id="comments-list">
-  <% @event.comments.each do |comment| %>
-    <li>
-      <strong><%= comment.user.username %></strong> - <%= time_ago_in_words(comment.created_at)%>
-      <p><%= comment.comment %></p>
-
-      <% if (comment.user == current_user || @event.user_id == current_user.id)%>
-        <%= button_to "Delete", event_comment_path(@event, comment), method: :delete, data: { confirm: "Are you sure you want to delete this comment?" } %>
-        <%if comment.user == current_user%>
-          <%= link_to "Edit", edit_event_comment_path(@event, comment) %>
-        <% end %>
+          <% if (comment.user == current_user || @event.user_id == current_user.id) %>
+            <%= button_to "Delete", event_comment_path(@event, comment), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to delete this comment?" } %>
+            <% if comment.user == current_user %>
+              <%= link_to "Edit", edit_event_comment_path(@event, comment), class: "btn btn-primary" %>
+            <% end %>
+          <% end %>
+        </li>
       <% end %>
-    </li>
-  <% end %>
-</ul>
+    </ul>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

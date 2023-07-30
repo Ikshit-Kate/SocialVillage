@@ -35,8 +35,12 @@
           <%= link_to "Events", events_path %>
           <%= link_to "Chat", rooms_path %>
           <div class="topnav-right">
-            <p align="right"><%= button_to "Sign out", destroy_user_session_path, method: :delete %> </p>
-          </div>
+          <p align="right">
+            <%= button_to "Sign out", destroy_user_session_path, method: :delete, style: "background-color: #f6f5f5; color: black; border: 1px solid white;" %>
+          </p>
+        </div>
+
+
           <div class="topnav-right">
             <p align="right"><%= link_to "Edit Profile", edit_user_registration_path%> </p>
           </div>
