@@ -10,9 +10,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    super
+  class Users::RegistrationsController < Devise::RegistrationsController
+    def create
+      build_resource(sign_up_params)
+  
+      if resource.save
+        redirect_to new_user_session_path
+      else
+        render :new
+      end
+    end
   end
+  
 
   # GET /resource/edit
   # def edit
