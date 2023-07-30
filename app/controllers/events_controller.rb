@@ -29,14 +29,16 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @comment = Comment.new
     @comments = @event.comments
-  rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, alert: 'Event not found.'
+  
     if @event.update(set_params)
       redirect_to @event
     else
       render :edit, status: :unprocessable_entity
     end
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, alert: 'Event not found.'
   end
+  
 
   def destroy
     @event = Event.find(params[:id])

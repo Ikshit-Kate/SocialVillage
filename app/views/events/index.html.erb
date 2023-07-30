@@ -1,13 +1,40 @@
-<%= link_to "make new entry", new_event_path%><br><br>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Page Title</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .event-container {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
 
+    .event-container img {
+      width: 300px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-4">
+    <%= link_to "Make New Entry", new_event_path, class: "btn btn-primary new-entry-link" %><br><br>
 
-<% @events.each do |event|%> 
-    <%= event.user.username%>
-    <p><b>Event name:</b> 
-   	 <%= link_to event.event_name, event%>
-    <p><b>Caption:</b> <%=  event.caption %></p>
-    <% event.images.each do |i|%>
-    <%= image_tag(i, style: "width: 300px; height: auto")%>
-    <%end%>
-<%end%> 
+    <% @events.each do |event| %>
+      <div class="event-container">
+       <u> <%= event.user.username %> </u>
+        <p><b>Event name:</b> <%= link_to event.event_name, event %></p>
+        <p><b>Caption:</b> <%= event.caption %></p>
+        <% event.images.each do |i| %>
+          <%= image_tag(i, class: "img-fluid") %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

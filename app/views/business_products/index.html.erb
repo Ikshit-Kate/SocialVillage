@@ -1,67 +1,79 @@
-<%= (link_to "make new entry", new_business_product_path)%>
-
+<%= link_to "Make New Entry", new_business_product_path, class: "new-entry-link" if Business.exists?(owner_username: current_user.username)%>
+<%= link_to "Order History", orders_path, method: :get, class: "new-entry-link" %><br><br>
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
 </head>
 <body>
+  <div class="container mt-4">
+    <h3>Order</h3>
+    <%= form_with url: orders_path do |f| %>
+      <div class="form-group">
+        <%= f.label :business_name, "Shop name" %>
+        <%= f.text_field :business_name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :customer_order, "Order" %>
+        <%= f.text_area :customer_order, rows: 5, class: "form-control" %>
+      </div>
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
 
-<%= form_for @search, url: business_products_path, method: :get do |f| %>
-	<%= f.label :"Business name" %>
-  <%= f.text_field :business_name %>
-	<%= f.submit "Search"%>
-<% end %>
+    <%= form_for @search, url: business_products_path, method: :get do |f| %>
+      <div class="form-group">
+        <%= f.label :business_name, "Business name" %>
+        <%= f.text_field :business_name, class: "form-control" %>
+      </div>
+      <%= f.submit "Search", class: "btn btn-primary" %>
+    <% end %>
 
-<h3>Order</h3>
-  <%= form_with url: orders_path do |f| %>
-    <%= f.label :"Shop name"%>
-    <%= f.text_field :business_name%>
-    <%= f.label :"Order"%>
-    <%= f.text_area :customer_order, size: "100x5" %>
-    <%= f.submit%>
-  <% end %>
-<%= link_to "Order History", orders_path, method: :get %>
+    <h2>Business Products</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Brand</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @businessproducts.each do |businessproduct| %>
+          <tr>
+            <td>
+              <%= businessproduct.name %><br>
+              <%= link_to "edit", edit_business_product_path(businessproduct), class: "btn btn-sm btn-secondary mr-1" %>
+              <%= button_to "Delete", business_product_path(businessproduct), method: :delete, data: { confirm: "Are you sure you want to delete this product?" }, class: "btn btn-sm btn-danger" %>
+            </td>
+            <td><%= businessproduct.brand %></td>
+            <td><%= businessproduct.price %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-
-<h2>Business Products</h2>
-
-<table>
-  <tr>
-    <th>name</th>
-    <th>brand</th>
-    <th>price</th>
-  </tr>
-
-
-    <% @businessproducts.each do |businessproduct|%> 
-    <tr>
-        <td> <%= businessproduct.name%>
-        <%= link_to "edit", edit_business_product_path(businessproduct)%>
-        <%= button_to "Delete", business_product_path(businessproduct), method: :delete %>
-        </td>
-        <td><%= businessproduct.brand%></td>
-        <td><%= businessproduct.price%></td>
-  </tr>
-  <%end%> 
-</table>
-
+  <!-- Bootstrap JS (optional, if you need any Bootstrap JavaScript functionality) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-

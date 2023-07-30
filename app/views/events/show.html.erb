@@ -8,7 +8,7 @@
 
 
 <%if @event.user_id == current_user.id%>
-  <%= link_to "edit", edit_event_path%>
+ <br> <%= link_to "edit", edit_event_path%>
   <%= button_to "Delete", event_path, method: :delete %>
 <%end%>
 
@@ -21,9 +21,12 @@
     <li>
       <strong><%= comment.user.username %></strong> - <%= time_ago_in_words(comment.created_at)%>
       <p><%= comment.comment %></p>
-      <% if comment.user == current_user %>
+
+      <% if (comment.user == current_user || @event.user_id == current_user.id)%>
         <%= button_to "Delete", event_comment_path(@event, comment), method: :delete, data: { confirm: "Are you sure you want to delete this comment?" } %>
-        <%= link_to "Edit", edit_event_comment_path(@event, comment) %>
+        <%if comment.user == current_user%>
+          <%= link_to "Edit", edit_event_comment_path(@event, comment) %>
+        <% end %>
       <% end %>
     </li>
   <% end %>

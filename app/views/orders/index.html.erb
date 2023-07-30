@@ -1,9 +1,22 @@
- <b><i>Order History</b></i><br><br>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order History</title>
+</head>
+<body>
+  <div style="font-weight: bold; font-style: italic;">
+    Order History
+  </div>
+  <br><br>
 
-<%@orders.each do |order|%> 
-	<% if (order.user_id == current_user.id)%>
-		<b>Date:</b>  <%= order.created_at.to_date %><br> 
-		<b>From shop:</b>  <%= order.business_name %><br> 
-		<b>Order</b>  <%= order.customer_order %><br><br> 
-	<%end%>
-<%end%>
+  <% @orders.each do |order| %>
+    <% if order.user_id == current_user.id %>
+      <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+        <div style="font-weight: bold;">Date: <%= order.created_at.to_date %></div>
+        <div><b>From shop:</b> <%= order.business_name %></div>
+        <div><b>Order:</b> <%= order.customer_order %></div>
+      </div>
+    <% end %>
+  <% end %>
+</body>
+</html>
