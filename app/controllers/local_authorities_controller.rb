@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LocalAuthoritiesController < ApplicationController
   before_action :find_authority, only: %i[show edit update destroy]
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LocalAuthority < ApplicationRecord
   validates :department, :name, :contact_number, :address, :email, presence: true
   validates :contact_number, :address, :email, uniqueness: true

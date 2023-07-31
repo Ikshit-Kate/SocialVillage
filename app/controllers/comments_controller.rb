@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :find_event
   before_action :find_comment, only: %i[edit update destroy]
@@ -7,15 +9,9 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      respond_to do |format|
-        format.js
-        format.html { redirect_to @event, notice: 'Comment was successfully created.' }
-      end
+      redirect_to @event, notice: 'Comment was successfully created.'
     else
-      respond_to do |format|
-        format.js
-        format.html { redirect_to @event, alert: 'Failed to create the comment.' }
-      end
+      redirect_to @event, alert: 'Failed to create the comment.'
     end
   end
 

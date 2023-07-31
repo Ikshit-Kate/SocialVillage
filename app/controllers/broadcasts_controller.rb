@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BroadcastsController < ApplicationController
   before_action :find_broadcast, only: %i[edit update destroy]
 

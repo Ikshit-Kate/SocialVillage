@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrderConfirmationMailer < ApplicationMailer
   def order_submission(order, user)
     @order = order

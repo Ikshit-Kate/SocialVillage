@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SuggestionsController < ApplicationController
   def index
     @suggestions = Suggestion.all.order(created_at: :desc)

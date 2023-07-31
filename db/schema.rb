@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 ActiveRecord::Schema[7.0].define(version: 20_230_729_111_149) do
   # These are extensions that must be enabled in order to support this database

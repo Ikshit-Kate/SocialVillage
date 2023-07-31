@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
   def index
     @events = Event.all
@@ -29,7 +31,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @comment = Comment.new
     @comments = @event.comments
-  
+
     if @event.update(set_params)
       redirect_to @event
     else
@@ -38,7 +40,6 @@ class EventsController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: 'Event not found.'
   end
-  
 
   def destroy
     @event = Event.find(params[:id])

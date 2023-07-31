@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BusinessesController < ApplicationController
   before_action :find_business, only: %i[show edit update destroy]
 
@@ -36,8 +38,7 @@ class BusinessesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def show
     @review = @business.reviews.build

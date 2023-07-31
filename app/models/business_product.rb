@@ -2,4 +2,6 @@
 
 class BusinessProduct < ApplicationRecord
   belongs_to :business
+
+  validates :name, :brand, :price, :business_name, presence: true
 end
