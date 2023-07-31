@@ -13,7 +13,8 @@
 <body>
   <div class="container mt-4">
     <p><b>Event name:</b> <%= @event.event_name %></p>
-    share button<%= social_share_button_tag(@event.event_name) %>
+<%#= social_share_button_tag(@event.event_name, url: event_url(@event)) %>
+
 
     <p><b>Caption:</b> <%= @event.caption %></p>
 
@@ -48,7 +49,6 @@
     </ul>
   </div>
 
-  <%= javascript_importmap_tags %>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
