@@ -111,11 +111,12 @@
         <%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
-
-      <div class="field">
-        <%= f.label :role %><br />
-        <%= f.select :role, { "Society member" => :society_member, "Secretary" => :secretary },{} %>
-      </div>
+      <%if (User.pluck(:role).count("secretary")) < 1%>
+        <div class="field">
+          <%= f.label :role %><br />
+          <%= f.select :role, { "Society member" => :society_member, "Secretary" => :secretary },{} %>
+        </div>
+      <%end%>
 
       <div class="actions">
         <%= f.submit "Sign Up" %>

@@ -42,10 +42,12 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
-  <div class="field">
-    <%= f.label :role %><br />
-    <%= f.select :role, { "Society member" => :society_member, "Secretary" => :secretary },{} %>
-  </div>
+  <%if (User.pluck(:role).count("secretary") < 1|| current_user.role == "secretary") %>
+    <div class="field">
+      <%= f.label :role %><br />
+      <%= f.select :role, { "Society member" => :society_member, "Secretary" => :secretary },{} %>
+    </div>
+  <%end%>
 
   <div class="actions">
     <%= f.submit "Update" %>

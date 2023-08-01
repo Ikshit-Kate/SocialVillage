@@ -13,6 +13,8 @@ gem 'rails', '~> 7.0.6'
 gem 'rubocop-rails', require: false
 gem 'sassc'
 gem 'social-share-button'
+gem 'rails_best_practices', '~> 1.23', '>= 1.23.2'
+gem 'stripe'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'

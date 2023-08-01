@@ -6,6 +6,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  before_validation :set_defaults
+
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   enum role: { society_member: 0, secretary: 1 }
@@ -18,4 +20,10 @@ class User < ApplicationRecord
   has_many :businesses
   has_many :events
   has_many :orders
+
+  private
+
+  def set_defaults
+    self.role = "society_member" if role.blank?
+  end
 end
