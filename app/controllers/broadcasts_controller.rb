@@ -2,6 +2,7 @@
 
 class BroadcastsController < ApplicationController
   before_action :find_broadcast, only: %i[edit update destroy]
+  load_and_authorize_resource
 
   def index
     @broadcasts = Broadcast.all.order(created_at: :desc)

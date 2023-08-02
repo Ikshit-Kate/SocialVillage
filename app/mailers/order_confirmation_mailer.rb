@@ -4,7 +4,6 @@ class OrderConfirmationMailer < ApplicationMailer
   def order_submission(order, user)
     @order = order
     @user = user
-    seller_email = @order.business.email
-    mail(to: seller_email, from: @user.email, subject: "Order Recieved from #{@user.username}")
+    mail(to: @order.business.email, from: @user.email, subject: "Order Recieved from #{@user.username}")
   end
 end

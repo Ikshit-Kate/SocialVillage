@@ -12,7 +12,6 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   enum role: { society_member: 0, secretary: 1 }
 
-  scope :all_except, ->(user) { where.not(id: user) }
   after_create_commit { broadcast_append_to 'users' }
 
   has_many :messages, dependent: :destroy
@@ -20,6 +19,16 @@ class User < ApplicationRecord
   has_many :businesses
   has_many :events
   has_many :orders
+
+  scope :all_except, ->(user) { where.not(id: user) }
+
+  def secretary?
+    role == 'secretary'
+  end
+
+  def society_member?
+    role == 'society_member'
+  end
 
   private
 

@@ -2,6 +2,7 @@
 
 class LocalAuthoritiesController < ApplicationController
   before_action :find_authority, only: %i[show edit update destroy]
+  load_and_authorize_resource
 
   def index
     @local_authorities = LocalAuthority.all

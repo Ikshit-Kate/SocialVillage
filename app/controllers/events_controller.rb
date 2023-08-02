@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :find_event, only: %i[show edit update destroy]
-
+  load_and_authorize_resource
+  
   def index
     @events = Event.all
   end
@@ -32,7 +33,6 @@ class EventsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
-    redirect_to @event, alert: 'Event not found.'
   end
 
   def destroy
