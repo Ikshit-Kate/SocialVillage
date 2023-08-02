@@ -13,7 +13,10 @@ class Ability
       can [:update, :destroy], Event, user_id: user.id
       can [:read, :create], Business
       can [:update, :destroy], Business, user_id: user.id
-
+      can :read, BusinessProduct
+      can :create, BusinessProduct if Business.exists?(owner_username: user.username)
+      can [:update, :destroy], BusinessProduct, business: { owner_username: user.username }
+      
 
     end
 
@@ -23,6 +26,9 @@ class Ability
       can :read, Broadcast
       can [:read], Business
       can [:update, :destroy], Business, user_id: user.id
+      can :read, BusinessProduct     
+      can :create, BusinessProduct if Business.exists?(owner_username: user.username)
+      can [:update, :destroy], BusinessProduct, business: { owner_username: user.username }
 
     end
 

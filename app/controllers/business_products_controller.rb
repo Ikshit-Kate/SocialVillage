@@ -2,6 +2,7 @@
 
 class BusinessProductsController < ApplicationController
   before_action :find_businessproduct, only: %i[edit update destroy]
+  load_and_authorize_resource
 
   def index
     if params[:business_product].present?
