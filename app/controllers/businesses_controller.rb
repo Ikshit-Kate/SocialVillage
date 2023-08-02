@@ -2,6 +2,7 @@
 
 class BusinessesController < ApplicationController
   before_action :find_business, only: %i[show edit update destroy]
+  load_and_authorize_resource
 
   def index
     @businesses = Business.all

@@ -11,6 +11,9 @@ class Ability
       can [:read, :create, :update, :destroy], Broadcast
       can [:read, :create], Event
       can [:update, :destroy], Event, user_id: user.id
+      can [:read, :create], Business
+      can [:update, :destroy], Business, user_id: user.id
+
 
     end
 
@@ -18,8 +21,8 @@ class Ability
       can :read, LocalAuthority
       can :send_sos,LocalAuthority
       can :read, Broadcast
-      can [:read, :create], Event
-      can [:update, :destroy], Event, user_id: user.id
+      can [:read], Business
+      can [:update, :destroy], Business, user_id: user.id
 
     end
 
