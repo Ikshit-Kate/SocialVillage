@@ -1,12 +1,15 @@
-
-<%= form_with model: @businessproduct do |form| %>
-    <%= form.label :"Product's name" %> 
-    <%= form.text_field :name%><br>
-    <%= form.label :"Product's brand"%> 
-    <%= form.text_field :brand%><br>
-    <%= form.label :"Product's price"%> 
-    <%= form.number_field :price, step: :any, placeholder: "00.00"%><br>
-    <%= form.submit%>
+<%if Business.exists?(owner_username: current_user.username)%>
+    <%= form_with model: @businessproduct do |form| %>
+        <%= form.label :"Product's name" %> 
+        <%= form.text_field :name%><br>
+        <%= form.label :"Product's brand"%> 
+        <%= form.text_field :brand%><br>
+        <%= form.label :"Product's price"%> 
+        <%= form.number_field :price, step: :any, placeholder: "00.00"%><br>
+        <%= form.submit%>
+    <%end%>
+<%else%>
+      <%=render partial: 'shared/unauthorized'%>
 <%end%>
 
 

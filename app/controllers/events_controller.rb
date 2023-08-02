@@ -1,6 +1,6 @@
-# frozen_string_literal: true
-
 class EventsController < ApplicationController
+  before_action :find_event, only: %i[show edit update destroy]
+
   def index
     @events = Event.all
   end
@@ -19,16 +19,11 @@ class EventsController < ApplicationController
     end
   end
 
-  def edit
-    @event = Event.find(params[:id])
-  end
+  def edit; end
 
-  def show
-    @event = Event.find(params[:id])
-  end
+  def show; end
 
   def update
-    @event = Event.find(params[:id])
     @comment = Comment.new
     @comments = @event.comments
 
@@ -37,17 +32,19 @@ class EventsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
-  rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, alert: 'Event not found.'
+    redirect_to @event, alert: 'Event not found.'
   end
 
   def destroy
-    @event = Event.find(params[:id])
     @event.destroy
     redirect_to events_path
   end
 
   private
+
+  def find_event
+    @event = Event.find(params[:id])
+  end
 
   def set_params
     params.require(:event).permit(:event_name, :caption, images: [])

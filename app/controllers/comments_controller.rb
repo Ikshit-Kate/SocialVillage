@@ -18,11 +18,15 @@ class CommentsController < ApplicationController
   def edit; end
 
   def update
+    # if @comment.user == current_user
     if @comment.update(comment_params)
       redirect_to @event, notice: 'Comment was successfully updated.'
     else
       render :edit
     end
+    # else
+    #   render partial: 'shared/unauthorized'
+    # end
   end
 
   def destroy

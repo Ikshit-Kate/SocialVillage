@@ -31,7 +31,8 @@ class OrdersController < ApplicationController
       return
     end
     if @order.save
-      OrderConfirmationMailer.order_submission(@order, @current_user).deliver_now
+      # Somewhere in your code
+      MyWorkerJob.perform_later(current_user.id, @order.id)
       redirect_to business_products_path, notice: 'Order created successfully!'
     else
       redirect_to business_products_path, status: :unprocessable_entity

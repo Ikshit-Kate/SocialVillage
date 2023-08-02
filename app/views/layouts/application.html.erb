@@ -1,54 +1,50 @@
-
 <!DOCTYPE html>
-  <html>
-    <head>
-      <title>SocialVillage</title>
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <%= csrf_meta_tags %>
-      <%= csp_meta_tag %>
-      <%= stylesheet_link_tag 'application' %>
-      <%= javascript_importmap_tags %>
-      <%= stylesheet_link_tag 'social-share-button', 'data-turbo-track': 'reload' %>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-      <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+<html>
+  <head>
+    <title>SocialVillage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application' %>
+    <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag 'social-share-button', 'data-turbo-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
-      <%= javascript_importmap_tags %>
-      <style>
-        .topnav-right {
+    <%= javascript_importmap_tags %>
+    <style>
+      .topnav-right {
         float: right;
-        }
-        <%= ".msg-#{current_user&.id}" %> {
+      }
+      <%= ".msg-#{current_user&.id}" %> {
         background-color: #007bff !important;
         padding: 10px;
-        }
-        <%= ".cont-#{current_user&.id}" %> {
+      }
+      <%= ".cont-#{current_user&.id}" %> {
         display: flex;
-        justify-content: flex-end
-        }
-      </style>
-    </head>
-    <body>
-      <% if user_signed_in? %> 
-        <div class="topnav">
-          <a class="active", href="http://localhost:3000/"><img src= "https://www.kbginfra.com/images/KBG_Logo_TSP_500x250.png" width="50px" height="30x" alt="Click to visit home page"/></a>
-
-          <%= link_to "Local Business", businesses_path  %>
-          <%= link_to "Broadcast", broadcasts_path  %>
-          <%= link_to "Local authority", local_authorities_path %>
-          <%= link_to "Events", events_path %>
-          <%= link_to "Chat", rooms_path %>
-          <div class="topnav-right">
-          <p align="right">
-            <%= button_to "Sign out", destroy_user_session_path, method: :delete, style: "background-color: #f6f5f5; color: black; border: 1px solid white;" %>
-          </p>
-        </div>
-
-
-          <div class="topnav-right">
-            <p align="right"><%= link_to "Edit Profile", edit_user_registration_path%> </p>
-          </div>
-        </div>
-      <%end%>
+        justify-content: flex-end;
+      }
+    </style>
+  </head>
+  <body>
+    <% if user_signed_in? %> 
+    <div class="topnav">
+      <a class="active" href="http://localhost:3000/"><img src="https://www.kbginfra.com/images/KBG_Logo_TSP_500x250.png" width="50px" height="30px" alt="Click to visit home page"></a>
+      <%= link_to "Local Business", businesses_path %>
+      <%= link_to "Broadcast", broadcasts_path %>
+      <%= link_to "Local authority", local_authorities_path %>
+      <%= link_to "Events", events_path %>
+      <%= link_to "Chat", rooms_path %>
+      <div class="topnav-right">
+        <p align="right">
+          <%= button_to "Sign out", destroy_user_session_path, method: :delete, style: "background-color: #f6f5f5; color: black; border: 1px solid white;" %>
+        </p>
+      </div>
+      <div class="topnav-right">
+        <p align="right"><%= link_to "Edit Profile", edit_user_registration_path %></p>
+      </div>
+    </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

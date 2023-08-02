@@ -1,5 +1,8 @@
+<% if @comment.user == current_user %>
+      <h1>Edit Comment</h1>
+  <%= render 'editform', comment: @comment %>
+	<%= link_to "Back to Event", @event %>
+<%else%>
+  <%=render partial: 'shared/unauthorized'%>
+<%end%>
 
-<h1>Edit Comment</h1>
-<%= render 'editform', comment: @comment %>
-
-<%= link_to "Back to Event", @event %>

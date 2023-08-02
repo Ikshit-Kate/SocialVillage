@@ -24,6 +24,6 @@ class User < ApplicationRecord
   private
 
   def set_defaults
-    self.role = "society_member" if role.blank?
+    self.role = 'society_member' if role.blank?
   end
 end
