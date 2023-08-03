@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :find_event, only: %i[show edit update destroy]
   # load_and_authorize_resource
-  
+
   def index
     @events = Event.all
   end

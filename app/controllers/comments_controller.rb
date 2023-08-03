@@ -25,7 +25,6 @@ class CommentsController < ApplicationController
       render :edit
     end
   end
-    
 
   def destroy
     @comment.destroy

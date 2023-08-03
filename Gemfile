@@ -7,6 +7,7 @@ ruby '2.7.0'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'byebug'
+gem 'cancancan'
 gem 'devise'
 gem 'httparty'
 gem 'kaminari'
@@ -14,11 +15,9 @@ gem 'rails', '~> 7.0.6'
 gem 'rails_best_practices', '~> 1.23', '>= 1.23.2'
 gem 'rubocop-rails', require: false
 gem 'sassc'
+gem 'sidekiq'
 gem 'social-share-button'
 gem 'stripe'
-gem 'sidekiq'
-gem 'cancancan'
-
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
