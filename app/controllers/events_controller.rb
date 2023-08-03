@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :find_event, only: %i[show edit update destroy]
-  load_and_authorize_resource
+  # load_and_authorize_resource
   
   def index
     @events = Event.all
@@ -12,7 +12,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(set_params)
-    @event.user_id = current_user.id
+    @event.user = current_user
     if @event.save
       redirect_to @event
     else

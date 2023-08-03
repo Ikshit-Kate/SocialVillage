@@ -3,6 +3,7 @@
 class CommentsController < ApplicationController
   before_action :find_event
   before_action :find_comment, only: %i[edit update destroy]
+  load_and_authorize_resource
 
   def create
     @comment = @event.comments.build(comment_params)
@@ -18,19 +19,15 @@ class CommentsController < ApplicationController
   def edit; end
 
   def update
-    # if @comment.user == current_user
     if @comment.update(comment_params)
       redirect_to @event, notice: 'Comment was successfully updated.'
     else
       render :edit
     end
-    # else
-    #   render partial: 'shared/unauthorized'
-    # end
   end
+    
 
   def destroy
-    @comment = @event.comments.find(params[:id])
     @comment.destroy
     redirect_to @event, notice: 'Comment was successfully deleted.'
   end

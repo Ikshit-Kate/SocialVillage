@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
-  before_action :find_business, only: %i[new create edit update destroy]
+  before_action :find_business
+  before_action :find_comment, only: %i[edit update destroy]
+  load_and_authorize_resource
 
   def create
     @review = @business.reviews.build(review_params)
@@ -7,16 +9,14 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to @business, notice: 'Review successfully created.'
     else
-      render 'business/show'
+      redirect_to @business, alert: 'Failed to create the comment.'
     end
   end
 
   def edit
-    @review = @business.reviews.find(params[:id])
   end
 
   def update
-    @review = @business.reviews.find(params[:id])
     if @review.update(review_params)
       redirect_to @business, notice: 'Review successfully updated.'
     else
@@ -25,12 +25,17 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = @business.reviews.find_by(id: params[:id])
     @review.destroy
     redirect_to @business, notice: 'Review successfully deleted.'
   end
 
   private
+
+  def find_comment
+    @review = @business.reviews.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to @business, alert: 'Event not found.'
+  end
 
   def find_business
     @business = Business.find(params[:business_id])

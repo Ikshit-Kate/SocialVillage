@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SuggestionsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @suggestions = Suggestion.all.order(created_at: :desc)
   end

@@ -1,10 +1,5 @@
-
-<% if @review.user == current_user %>
-      <h1>Edit Review</h1>
+<h1>Edit Review</h1>
 
 <%= render 'form', review: @review %>
 
 <%= link_to 'Back to Business', @business %>
-<%else%>
-  <%=render partial: 'shared/unauthorized'%>
-<%end%>
