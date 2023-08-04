@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :suggestions
   resources :local_authorities
   resources :broadcasts
+  resources :payments
   post '/local_authorities/send_sos', to: 'local_authorities#send_sos', as: 'sos'
 
   resources :events do

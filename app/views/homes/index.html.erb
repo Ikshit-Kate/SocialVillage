@@ -1,16 +1,15 @@
 <% if user_signed_in? %>
   <div id="google_element">
-              <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
-        </div>
+    <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+  </div>
   <%= render partial: 'header'%>
   <%= render partial: 'location_list'%>
   <%= render partial: 'suggestions/form' %>
-  
-<script>
-        function loadGoogleTranslate() {
-            new google.translate.TranslateElement("google_element");
-        }
-    </script>
+  <script>
+    function loadGoogleTranslate() {
+    new google.translate.TranslateElement("google_element");
+      }
+  </script>
 
 <% else %>
   <%= button_to "Sign in", new_user_session_path %>
